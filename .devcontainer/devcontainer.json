@@ -1,6 +1,9 @@
 {
     "name": "Python Dev",
-    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "dev-container",  // `docker-compose.yml`에서 지정한 서비스 이름
+    "workspaceFolder": "/workspace",  // ✅ 개발 환경의 루트 폴더 지정
+    "overrideCommand": false,  // ✅ 기본 커맨드를 docker-compose.yml에서 지정한 대로 사용
     "postCreateCommand": "[ -f requirements.txt ] && pip install -r requirements.txt || echo 'No requirements.txt found, skipping install'",
     "containerEnv": {
         "PYTHONUNBUFFERED": "1"

@@ -1,0 +1,15 @@
+services:
+  dev-container:
+    container_name: my_container # ✅ 컨테이너 이름 설정
+    image: mcr.microsoft.com/devcontainers/python:3.11  # ✅ 컨테이너 이미지 지정
+    volumes:
+      - .:/workspace  # ✅ 코드 동기화 (로컬 → 컨테이너)
+    environment:
+      PYTHONUNBUFFERED: 1  # ✅ 환경 변수 설정
+    command: sleep infinity  # ✅ 컨테이너가 종료되지 않도록 유지
+    networks:
+      - dev_network  # ✅ 네트워크 설정
+
+networks:
+  dev_network:
+    driver: bridge  # ✅ 브릿지 네트워크 설정
